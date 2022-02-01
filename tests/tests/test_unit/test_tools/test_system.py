@@ -91,7 +91,7 @@ def test_memory_in_bytes():
     )
     assert isclose(
         system.memory_in_bytes(1000, "pb"),
-        10 ** 18,
+        10**18,
         abs_tol=memory_detection_tolerance,
     )
 
