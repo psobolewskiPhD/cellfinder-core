@@ -32,13 +32,12 @@ def read_with_dask(path):
     :param path:
     :return:
     """
-    filenames = glob.glob(os.path.join(path, "*.tif"))
-    # if path.endswith(".txt"):
-    #     with open(path, "r") as f:
-    #         filenames = [line.rstrip() for line in f.readlines()]
+    if path.endswith(".txt"):
+        with open(path, "r") as f:
+            filenames = [line.rstrip() for line in f.readlines()]
 
-    # else:
-    #     filenames = glob.glob(os.path.join(path, "*.tif"))
+    else:
+        filenames = glob.glob(os.path.join(path, "*.tif"))
 
     shape, dtype = get_tiff_meta(filenames[0])
     lazy_arrays = [lazy_imread(fn) for fn in get_sorted_file_paths(filenames)]
