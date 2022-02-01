@@ -16,8 +16,8 @@ def test_read_with_dask_txt():
     assert type(stack) == d_array.Array
 
 
-# def test_read_with_dask_glob_txt_equal():
-#     txt_stack = IO.read_with_dask(BRAIN_PATHS)
-#     glob_stack = IO.read_with_dask(BRAIN_DIR)
+def test_read_with_dask_glob_txt_equal():
+    txt_stack = IO.read_with_dask(BRAIN_PATHS)
+    glob_stack = IO.read_with_dask(BRAIN_DIR)
 
-#     assert d_array.equal(txt_stack, glob_stack).all()
+    assert d_array.equal(txt_stack, glob_stack).compute()
