@@ -21,4 +21,4 @@ def test_read_with_dask_glob_txt_equal():
     txt_stack = IO.read_with_dask(BRAIN_PATHS)
     glob_stack = IO.read_with_dask(BRAIN_DIR)
 
-    assert np.equal(txt_stack.compute(), glob_stack.compute()).all()
+    assert np.array_equal(txt_stack.compute(), glob_stack.compute())
